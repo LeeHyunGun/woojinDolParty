@@ -3,111 +3,672 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>돌잔치 초대장</title>
-  <meta name="description" content="소중한 첫 생일에 초대합니다" />
+  <title>이우진 돌잔치 초대장</title>
+  <meta name="description" content="이우진의 첫 생일에 초대합니다" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="이우진 돌잔치에 초대합니다" />
+  <meta property="og:description" content="2026년 4월 4일 (금) 오전 11시 | 별내 차림" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #fff7f2;
-      --card: #ffffff;
-      --accent: #ff8a65;
-      --text: #333333;
-      --muted: #777777;
+      --cream: #faf8f3;
+      --sand: #e8dcc8;
+      --terracotta: #d4a574;
+      --brown: #8b7355;
+      --dark: #3d3327;
+      --accent: #c9a882;
     }
-    * { box-sizing: border-box; }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
-      color: var(--text);
+      font-family: 'Gowun Batang', 'Nanum Myeongjo', serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.8;
+      overflow-x: hidden;
     }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 16px; }
-    .card {
-      background: var(--card);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    
+    /* 장식적 배경 요소 */
+    .bg-decoration {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    
+    .bg-decoration::before,
+    .bg-decoration::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sand) 0%, transparent 70%);
+    }
+    
+    .bg-decoration::before {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      right: -200px;
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    .bg-decoration::after {
+      width: 400px;
+      height: 400px;
+      bottom: -100px;
+      left: -100px;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(5deg); }
+      66% { transform: translate(-20px, 20px) rotate(-5deg); }
+    }
+    
+    /* 메인 컨테이너 */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    /* 히어로 섹션 */
+    .hero {
+      text-align: center;
+      padding: 60px 0;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero-ornament {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
+      margin: 0 auto 30px;
+      animation: expandWidth 1.5s ease-out;
+    }
+    
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to { width: 80px; opacity: 1; }
+    }
+    
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.3s forwards;
+    }
+    
+    .hero-name {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.5s forwards;
+    }
+    
+    .hero-message {
+      font-size: 18px;
+      color: var(--brown);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.7s forwards;
+    }
+    
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--terracotta);
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.9s forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* 인포 카드 */
+    .info-card {
+      background: white;
+      border-radius: 2px;
+      padding: 50px 40px;
+      margin: 60px 0;
+      box-shadow: 0 20px 60px rgba(61, 51, 39, 0.08);
+      position: relative;
       overflow: hidden;
     }
-    .hero {
-      padding: 28px 20px 16px;
+    
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--terracotta), var(--accent), var(--terracotta));
+    }
+    
+    .info-title {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 24px;
+      font-weight: 700;
       text-align: center;
-      background: radial-gradient(1200px 200px at 50% -20%, #ffe0d6, #fff);
+      margin-bottom: 40px;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      width: 100%;
     }
-    .badge {
-      display: inline-block; padding: 6px 12px; border-radius: 999px;
-      background: #fff1ec; color: var(--accent); font-weight: 600; font-size: 12px;
+    
+    .info-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: var(--terracotta);
     }
-    h1 { margin: 14px 0 8px; font-size: 28px; letter-spacing: -0.02em; }
-    .subtitle { color: var(--muted); }
-    .photo {
-      width: 100%; aspect-ratio: 4 / 3; background: #f2f2f2;
-      display: grid; place-items: center; color: #aaa;
+    
+    .info-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 30px;
     }
-    .section { padding: 20px; }
-    .section h2 { font-size: 18px; margin: 0 0 10px; }
-    .kv { display: grid; grid-template-columns: 80px 1fr; gap: 8px 12px; }
-    .kv div { padding: 6px 0; }
-    .label { color: var(--muted); }
-    .divider { height: 1px; background: #eee; margin: 0 20px; }
-    .cta {
-      display: flex; gap: 10px; flex-wrap: wrap;
+    
+    .info-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(212, 165, 116, 0.15);
     }
+    
+    .info-row:last-child {
+      border-bottom: none;
+    }
+    
+    .info-label {
+      font-weight: 700;
+      color: var(--brown);
+      font-size: 15px;
+    }
+    
+    .info-value {
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    /* 버튼 스타일 */
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    
     .btn {
-      flex: 1 1 160px;
-      padding: 14px 16px; border-radius: 14px; border: 1px solid #eee;
-      background: #fff; cursor: pointer; font-weight: 600;
+      flex: 1;
+      padding: 16px 24px;
+      border: 2px solid var(--terracotta);
+      background: transparent;
+      color: var(--terracotta);
+      font-family: 'Gowun Batang', serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .btn.secondary { background: #fff7f2; color: var(--accent); }
-    footer { text-align: center; padding: 16px; color: var(--muted); font-size: 12px; }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: var(--terracotta);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn:hover {
+      color: white;
+      border-color: var(--terracotta);
+    }
+    
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+    }
+    
+    .btn-primary::before {
+      background: var(--brown);
+    }
+    
+    /* 갤러리 섹션 */
+    .gallery-section {
+      margin: 80px 0;
+      padding: 60px 0;
+    }
+    
+    .gallery-title {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      color: var(--dark);
+    }
+    
+    .gallery-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      aspect-ratio: 4 / 3;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(61, 51, 39, 0.15);
+    }
+    
+    .gallery-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f3ef;
+      color: var(--brown);
+      font-size: 18px;
+    }
+    
+    .gallery-slide.active {
+      opacity: 1;
+    }
+    
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .gallery-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: 2px solid white;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .gallery-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+    
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--brown);
+      transition: all 0.3s;
+      z-index: 10;
+    }
+    
+    .gallery-nav:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .gallery-nav.prev {
+      left: 20px;
+    }
+    
+    .gallery-nav.next {
+      right: 20px;
+    }
+    
+    /* 마무리 섹션 */
+    .closing {
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 60px;
+    }
+    
+    .closing-message {
+      font-size: 18px;
+      line-height: 2;
+      color: var(--brown);
+      margin-bottom: 30px;
+    }
+    
+    .closing-ornament {
+      width: 60px;
+      height: 60px;
+      margin: 40px auto 20px;
+      border: 2px solid var(--terracotta);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    
+    .closing-name {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-top: 20px;
+    }
+    
+    /* 반응형 */
+    @media (max-width: 640px) {
+      .hero-name {
+        font-size: 42px;
+      }
+      
+      .hero-date {
+        font-size: 20px;
+      }
+      
+      .info-card {
+        padding: 40px 24px;
+      }
+      
+      .info-row {
+        grid-template-columns: 80px 1fr;
+        gap: 12px;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+      
+      .gallery-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .gallery-nav.prev {
+        left: 10px;
+      }
+      
+      .gallery-nav.next {
+        right: 10px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="hero">
-        <span class="badge">첫 번째 생일</span>
-        <h1>OO의 돌잔치에 초대합니다</h1>
-        <p class="subtitle">사랑으로 자라온 첫 1년, 함께 축하해 주세요</p>
-      </div>
-
-      <div class="photo">
-        아기 사진 영역 (여기에 사진 넣기)
-      </div>
-
-      <div class="section">
-        <h2>행사 안내</h2>
-        <div class="kv">
-          <div class="label">일시</div><div>2026년 3월 15일 (일) 오후 12시</div>
-          <div class="label">장소</div><div>○○컨벤션 3층 라벤더홀</div>
-          <div class="label">주소</div><div>경기도 ○○시 ○○로 123</div>
+  <div class="bg-decoration"></div>
+  
+  <div class="container">
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+      <div class="hero-ornament"></div>
+      <div class="hero-subtitle">First Birthday</div>
+      <h1 class="hero-name">이우진</h1>
+      <p class="hero-message">첫 돌을 맞이하는 소중한 날</p>
+      <p class="hero-message">함께 축하해 주세요</p>
+      <div class="hero-date">2026. 04. 04. FRI</div>
+    </section>
+    
+    <!-- 행사 정보 -->
+    <section class="info-card">
+      <h2 class="info-title">초대합니다</h2>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">일시</div>
+          <div class="info-value">2026년 4월 4일 금요일<br>오전 11시</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">장소</div>
+          <div class="info-value">별내 차림</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">주소</div>
+          <div class="info-value">경기도 남양주시 별내동<br>(정확한 주소는 추후 업데이트)</div>
         </div>
       </div>
-
-      <div class="divider"></div>
-
-      <div class="section">
-        <h2>오시는 길</h2>
-        <p class="subtitle">아래 버튼을 누르면 지도 앱이 열립니다.</p>
-        <div class="cta">
-          <a class="btn secondary" href="https://map.kakao.com/" target="_blank" rel="noreferrer">카카오맵</a>
-          <a class="btn secondary" href="https://map.naver.com/" target="_blank" rel="noreferrer">네이버지도</a>
+      
+      <div class="button-group">
+        <a href="https://map.kakao.com/link/search/별내 차림" target="_blank" rel="noreferrer" class="btn">카카오맵</a>
+        <a href="https://map.naver.com/p/search/별내 차림" target="_blank" rel="noreferrer" class="btn">네이버지도</a>
+      </div>
+    </section>
+    
+    <!-- 참석 안내 -->
+    <section class="info-card">
+      <h2 class="info-title">참석 안내</h2>
+      <p style="text-align: center; color: var(--brown); margin-bottom: 30px; line-height: 1.8;">
+        소중한 자리를 함께 해주시는<br>
+        모든 분들께 감사드립니다<br><br>
+        참석 여부를 미리 알려주시면<br>
+        더욱 정성스럽게 준비하겠습니다
+      </p>
+      
+      <div class="button-group">
+        <a href="https://forms.gle/" target="_blank" rel="noreferrer" class="btn btn-primary">참석 여부 남기기</a>
+      </div>
+    </section>
+    
+    <!-- 갤러리 섹션 -->
+    <section class="gallery-section">
+      <h2 class="gallery-title">우진이의 한 살</h2>
+      
+      <div class="gallery-container">
+        <!-- 슬라이드 1 -->
+        <div class="gallery-slide active">
+          <!-- 여기에 사진 1 -->
+          <div>사진 1</div>
+        </div>
+        
+        <!-- 슬라이드 2 -->
+        <div class="gallery-slide">
+          <!-- 여기에 사진 2 -->
+          <div>사진 2</div>
+        </div>
+        
+        <!-- 슬라이드 3 -->
+        <div class="gallery-slide">
+          <!-- 여기에 사진 3 -->
+          <div>사진 3</div>
+        </div>
+        
+        <!-- 슬라이드 4 -->
+        <div class="gallery-slide">
+          <!-- 여기에 사진 4 -->
+          <div>사진 4</div>
+        </div>
+        
+        <!-- 슬라이드 5 -->
+        <div class="gallery-slide">
+          <!-- 여기에 사진 5 -->
+          <div>사진 5</div>
+        </div>
+        
+        <!-- 네비게이션 버튼 -->
+        <button class="gallery-nav prev" aria-label="이전 사진">‹</button>
+        <button class="gallery-nav next" aria-label="다음 사진">›</button>
+        
+        <!-- 인디케이터 -->
+        <div class="gallery-controls">
+          <div class="gallery-dot active" data-index="0"></div>
+          <div class="gallery-dot" data-index="1"></div>
+          <div class="gallery-dot" data-index="2"></div>
+          <div class="gallery-dot" data-index="3"></div>
+          <div class="gallery-dot" data-index="4"></div>
         </div>
       </div>
-
-      <div class="divider"></div>
-
-      <div class="section">
-        <h2>참석 여부</h2>
-        <p class="subtitle">준비를 위해 참석 여부를 알려주시면 감사하겠습니다.</p>
-        <div class="cta">
-          <!-- 구글폼/네이버폼 링크로 교체 -->
-          <a class="btn primary" href="https://forms.gle/" target="_blank" rel="noreferrer">참석 여부 남기기</a>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      © 우리 가족의 소중한 하루
-    </footer>
+    </section>
+    
+    <!-- 마무리 -->
+    <section class="closing">
+      <p class="closing-message">
+        사랑으로 자라온 첫 1년<br>
+        함께 기뻐해 주시는<br>
+        모든 분들께 감사드립니다
+      </p>
+      
+      <div class="closing-ornament">👶</div>
+      <div class="closing-name">이우진의 부모님 올림</div>
+    </section>
   </div>
+  
+  <script>
+    // 갤러리 슬라이드 기능
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.gallery-slide');
+    const dots = document.querySelectorAll('.gallery-dot');
+    const totalSlides = slides.length;
+    
+    function showSlide(index) {
+      // 범위 체크
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
+      else currentSlide = index;
+      
+      // 모든 슬라이드 숨기기
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // 현재 슬라이드 보이기
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+    
+    // 이전/다음 버튼
+    document.querySelector('.gallery-nav.prev').addEventListener('click', () => {
+      showSlide(currentSlide - 1);
+    });
+    
+    document.querySelector('.gallery-nav.next').addEventListener('click', () => {
+      showSlide(currentSlide + 1);
+    });
+    
+    // 인디케이터 클릭
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        showSlide(index);
+      });
+    });
+    
+    // 자동 슬라이드 (5초마다)
+    setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+    
+    // 키보드 네비게이션
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+      if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+    });
+    
+    // 스와이프 지원 (모바일)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const galleryContainer = document.querySelector('.gallery-container');
+    
+    galleryContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    galleryContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) {
+        // 왼쪽으로 스와이프 (다음)
+        showSlide(currentSlide + 1);
+      }
+      if (touchEndX > touchStartX + 50) {
+        // 오른쪽으로 스와이프 (이전)
+        showSlide(currentSlide - 1);
+      }
+    }
+  </script>
 </body>
 </html>
