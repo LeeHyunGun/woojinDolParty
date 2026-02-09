@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>이우진 돌잔치 초대장</title>
   <meta name="description" content="이우진의 첫 생일에 초대합니다" />
-  
+
   <!-- Open Graph -->
   <meta property="og:title" content="이우진 돌잔치에 초대합니다" />
-  <meta property="og:description" content="2026년 4월 4일 (금) 오전 11시 | 별내 차림" />
+  <meta property="og:description" content="2026년 4월 4일 (토) 오전 11시 | 별내 차림" />
   <meta property="og:type" content="website" />
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --cream: #faf8f3;
@@ -25,13 +25,13 @@
       --dark: #3d3327;
       --accent: #c9a882;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Gowun Batang', 'Nanum Myeongjo', serif;
       background: var(--cream);
@@ -39,19 +39,16 @@
       line-height: 1.8;
       overflow-x: hidden;
     }
-    
-    /* 장식적 배경 요소 */
+
+    /* 배경 */
     .bg-decoration {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+      inset: 0;
       pointer-events: none;
       z-index: 0;
       opacity: 0.4;
     }
-    
+
     .bg-decoration::before,
     .bg-decoration::after {
       content: '';
@@ -59,7 +56,7 @@
       border-radius: 50%;
       background: radial-gradient(circle, var(--sand) 0%, transparent 70%);
     }
-    
+
     .bg-decoration::before {
       width: 600px;
       height: 600px;
@@ -67,7 +64,7 @@
       right: -200px;
       animation: float 20s ease-in-out infinite;
     }
-    
+
     .bg-decoration::after {
       width: 400px;
       height: 400px;
@@ -75,14 +72,12 @@
       left: -100px;
       animation: float 25s ease-in-out infinite reverse;
     }
-    
+
     @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(5deg); }
-      66% { transform: translate(-20px, 20px) rotate(-5deg); }
+      0%, 100% { transform: translate(0,0); }
+      50% { transform: translate(30px,-30px); }
     }
-    
-    /* 메인 컨테이너 */
+
     .container {
       position: relative;
       z-index: 1;
@@ -90,627 +85,267 @@
       margin: 0 auto;
       padding: 40px 20px;
     }
-    
-    /* 히어로 섹션 */
+
+    /* 히어로 */
     .hero {
       text-align: center;
       padding: 60px 0;
-      animation: fadeInUp 1s ease-out;
     }
-    
+
     .hero-ornament {
       width: 80px;
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
       margin: 0 auto 30px;
-      animation: expandWidth 1.5s ease-out;
     }
-    
-    @keyframes expandWidth {
-      from { width: 0; opacity: 0; }
-      to { width: 80px; opacity: 1; }
-    }
-    
+
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-size: 14px;
       letter-spacing: 3px;
-      text-transform: uppercase;
       color: var(--brown);
       margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out 0.3s forwards;
     }
-    
+
     .hero-name {
       font-family: 'Nanum Myeongjo', serif;
       font-size: 56px;
       font-weight: 800;
-      color: var(--dark);
       margin-bottom: 16px;
-      letter-spacing: -1px;
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.5s forwards;
     }
-    
+
     .hero-message {
       font-size: 18px;
       color: var(--brown);
-      margin-bottom: 8px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out 0.7s forwards;
     }
-    
+
     .hero-date {
       font-family: 'Cormorant Garamond', serif;
       font-size: 24px;
-      font-weight: 300;
       color: var(--terracotta);
       margin-top: 30px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out 0.9s forwards;
     }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes fadeInUp {
-      from { 
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to { 
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* 인포 카드 */
-    .info-card {
+
+    /* 카드 공통 */
+    .info-card,
+    .message-card {
       background: white;
-      border-radius: 2px;
-      padding: 50px 40px;
+      padding: 60px 40px;
       margin: 60px 0;
-      box-shadow: 0 20px 60px rgba(61, 51, 39, 0.08);
+      box-shadow: 0 20px 60px rgba(61,51,39,0.08);
       position: relative;
-      overflow: hidden;
     }
-    
-    .info-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--terracotta), var(--accent), var(--terracotta));
+
+    .info-card::before,
+    .message-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height:3px;
+      background: linear-gradient(90deg,var(--terracotta),var(--accent),var(--terracotta));
     }
-    
+
     .info-title {
-      font-family: 'Nanum Myeongjo', serif;
       font-size: 24px;
-      font-weight: 700;
       text-align: center;
       margin-bottom: 40px;
-      color: var(--dark);
-      position: relative;
-      display: inline-block;
-      width: 100%;
     }
-    
-    .info-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 1px;
-      background: var(--terracotta);
-    }
-    
-    .info-grid {
-      display: grid;
-      gap: 24px;
-      margin-top: 30px;
-    }
-    
+
     .info-row {
       display: grid;
       grid-template-columns: 100px 1fr;
       gap: 20px;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(212, 165, 116, 0.15);
+      border-bottom: 1px solid rgba(212,165,116,.15);
     }
-    
-    .info-row:last-child {
+
+    .info-row:last-child { border-bottom:none; }
+
+    .info-label { font-weight:700; color:var(--brown); }
+
+    .button-group {
+      display:flex;
+      gap:12px;
+      margin-top:40px;
+    }
+
+    .btn {
+      flex:1;
+      padding:16px;
+      border:2px solid var(--terracotta);
+      text-align:center;
+      text-decoration:none;
+      color:var(--terracotta);
+      font-weight:700;
+    }
+
+    /* 메시지 카드 */
+    .message-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
+      margin: 0 auto 40px;
+    }
+
+    .message-content {
+      font-size:20px;
+      line-height:2.2;
+      text-align:center;
+    }
+
+    .message-sub {
+      font-size:16px;
+      color:var(--brown);
+      text-align:center;
+      margin-top:30px;
+    }
+
+    /* 계좌 영역 */
+    .account-section {
+      margin: 80px 0 40px;
+      text-align: center;
+      color: var(--brown);
+    }
+
+    .account-title {
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .account-list {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .account-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(139,115,85,0.15);
+    }
+
+    .account-row:last-child {
       border-bottom: none;
     }
-    
-    .info-label {
-      font-weight: 700;
-      color: var(--brown);
-      font-size: 15px;
+
+    .account-name { font-weight:700; }
+
+    .account-info {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: .5px;
     }
-    
-    .info-value {
-      color: var(--dark);
-      font-size: 16px;
-      line-height: 1.6;
+
+    .account-note {
+      margin-top: 24px;
+      font-size: 13px;
+      opacity: .8;
     }
-    
-    /* 버튼 스타일 */
-    .button-group {
-      display: flex;
-      gap: 12px;
-      margin-top: 40px;
-    }
-    
-    .btn {
-      flex: 1;
-      padding: 16px 24px;
-      border: 2px solid var(--terracotta);
-      background: transparent;
-      color: var(--terracotta);
-      font-family: 'Gowun Batang', serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: var(--terracotta);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-      z-index: -1;
-    }
-    
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    
-    .btn:hover {
-      color: white;
-      border-color: var(--terracotta);
-    }
-    
-    /* 메시지 카드 */
-    .message-card {
-      background: white;
-      border-radius: 2px;
-      padding: 60px 40px;
-      margin: 60px 0;
-      box-shadow: 0 20px 60px rgba(61, 51, 39, 0.08);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    
-    .message-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--terracotta), var(--accent), var(--terracotta));
-    }
-    
-    .message-icon {
-      font-size: 48px;
-      margin-bottom: 30px;
-    }
-    
-    .message-content {
-      font-size: 20px;
-      line-height: 2.2;
-      color: var(--dark);
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-    
-    .message-sub {
-      font-size: 16px;
-      color: var(--brown);
-      line-height: 1.8;
-      margin-top: 30px;
-    }
-    
-    /* 갤러리 섹션 */
-    .gallery-section {
-      margin: 80px 0;
-      padding: 60px 0;
-    }
-    
-    .gallery-title {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 32px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 50px;
-      color: var(--dark);
-    }
-    
-    .gallery-container {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto;
-      aspect-ratio: 4 / 3;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(61, 51, 39, 0.15);
-    }
-    
-    .gallery-slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f5f3ef;
-      color: var(--brown);
-      font-size: 18px;
-    }
-    
-    .gallery-slide.active {
-      opacity: 1;
-    }
-    
-    .gallery-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .gallery-controls {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      z-index: 10;
-    }
-    
-    .gallery-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      border: 2px solid white;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .gallery-dot.active {
-      background: white;
-      transform: scale(1.3);
-    }
-    
-    .gallery-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--brown);
-      transition: all 0.3s;
-      z-index: 10;
-    }
-    
-    .gallery-nav:hover {
-      background: white;
-      transform: translateY(-50%) scale(1.1);
-    }
-    
-    .gallery-nav.prev {
-      left: 20px;
-    }
-    
-    .gallery-nav.next {
-      right: 20px;
-    }
-    
-    /* 마무리 섹션 */
+
+    /* 마무리 */
     .closing {
-      text-align: center;
-      padding: 60px 20px;
-      margin-top: 60px;
+      text-align:center;
+      padding:60px 20px;
     }
-    
+
     .closing-message {
-      font-size: 18px;
-      line-height: 2;
-      color: var(--brown);
-      margin-bottom: 30px;
+      font-size:18px;
+      color:var(--brown);
+      line-height:2;
     }
-    
-    .closing-ornament {
-      width: 60px;
-      height: 60px;
-      margin: 40px auto 20px;
-      border: 2px solid var(--terracotta);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-    
+
     .closing-name {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-top: 20px;
+      margin-top:30px;
+      font-weight:700;
     }
-    
-    /* 반응형 */
-    @media (max-width: 640px) {
-      .hero-name {
-        font-size: 42px;
-      }
-      
-      .hero-date {
-        font-size: 20px;
-      }
-      
-      .info-card {
-        padding: 40px 24px;
-      }
-      
-      .message-card {
-        padding: 50px 24px;
-      }
-      
-      .message-content {
-        font-size: 18px;
-      }
-      
-      .info-row {
-        grid-template-columns: 80px 1fr;
-        gap: 12px;
-      }
-      
-      .button-group {
-        flex-direction: column;
-      }
-      
-      .gallery-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-      
-      .gallery-nav.prev {
-        left: 10px;
-      }
-      
-      .gallery-nav.next {
-        right: 10px;
-      }
+
+    @media(max-width:640px){
+      .hero-name{font-size:42px;}
+      .button-group{flex-direction:column;}
+      .info-card,.message-card{padding:40px 24px;}
     }
   </style>
 </head>
 <body>
-  <div class="bg-decoration"></div>
-  
-  <div class="container">
-    <!-- 히어로 섹션 -->
-    <section class="hero">
-      <div class="hero-ornament"></div>
-      <div class="hero-subtitle">First Birthday</div>
-      <h1 class="hero-name">이우진</h1>
-      <p class="hero-message">첫 돌을 맞이하는 소중한 날</p>
-      <p class="hero-message">함께 축하해 주세요</p>
-      <div class="hero-date">2026. 04. 04. SAT</div>
-    </section>
-    
-    <!-- 행사 정보 -->
-    <section class="info-card">
-      <h2 class="info-title">초대합니다</h2>
-      <div class="info-grid">
-        <div class="info-row">
-          <div class="info-label">일시</div>
-          <div class="info-value">2026년 4월 4일 토요일<br>오전 11시</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">장소</div>
-          <div class="info-value">별내 차림</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">주소</div>
-          <div class="info-value">경기 남양주시 두물로 19<br>메가박스 건물 5층</div>
-        </div>
+<div class="bg-decoration"></div>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="hero-ornament"></div>
+    <div class="hero-subtitle">First Birthday</div>
+    <h1 class="hero-name">이우진</h1>
+    <p class="hero-message">첫 돌을 맞이하는 소중한 날</p>
+    <p class="hero-message">함께 축하해 주세요</p>
+    <div class="hero-date">2026. 04. 04. SAT</div>
+  </section>
+
+  <section class="info-card">
+    <h2 class="info-title">초대합니다</h2>
+    <div class="info-row">
+      <div class="info-label">일시</div>
+      <div>2026년 4월 4일 토요일<br>오전 11시</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">장소</div>
+      <div>별내 차림</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">주소</div>
+      <div>경기 남양주시 두물로 19<br>메가박스 건물 5층</div>
+    </div>
+
+    <div class="button-group">
+      <a class="btn" href="https://map.naver.com/p/search/별내 차림" target="_blank">네이버지도</a>
+      <a class="btn" href="https://map.kakao.com/link/search/별내 차림" target="_blank">카카오맵</a>
+    </div>
+  </section>
+
+  <section class="message-card">
+    <div class="message-divider"></div>
+    <p class="message-content">
+      작은 손과 발로<br>
+      하루하루 성장해온 365일<br><br>
+      우진이의 첫 생일을<br>
+      함께 축하해 주세요
+    </p>
+    <p class="message-sub">
+      바쁘신 중에도 자리 빛내주시는<br>
+      모든 분들께 감사드립니다
+    </p>
+  </section>
+
+  <!-- 계좌 안내 -->
+  <section class="account-section">
+    <p class="account-title">마음 전하실 곳</p>
+    <div class="account-list">
+      <div class="account-row">
+        <span class="account-name">아버지</span>
+        <span class="account-info">국민은행 123-45-678901 · 이현건</span>
       </div>
-      
-      <div class="button-group">
-        <a href="https://map.naver.com/p/search/별내 차림" target="_blank" rel="noreferrer" class="btn">네이버지도</a>
-        <a href="https://map.kakao.com/link/search/별내 차림" target="_blank" rel="noreferrer" class="btn">카카오맵</a>
+      <div class="account-row">
+        <span class="account-name">어머니</span>
+        <span class="account-info">신한은행 110-234-567890 · 원소희</span>
       </div>
-    </section>
-    
-    <!-- 감사 메시지 -->
-    <section class="message-card">
-      <div class="message-icon">✨</div>
-      <p class="message-content">
-        작은 손과 발로<br>
-        하루하루 성장해온 365일<br>
-        <br>
-        우진이의 첫 생일을<br>
-        함께 축하해 주세요
-      </p>
-      <p class="message-sub">
-        바쁘신 중에도 자리 빛내주시는<br>
-        모든 분들께 감사드립니다
-      </p>
-    </section>
-    
-    <!-- 갤러리 섹션 -->
-    <section class="gallery-section">
-      <h2 class="gallery-title">우진이의 한 살</h2>
-      
-      <div class="gallery-container">
-        <!-- 슬라이드 1 -->
-        <div class="gallery-slide active">
-          <!-- 여기에 사진 1 -->
-          <div>사진 1</div>
-        </div>
-        
-        <!-- 슬라이드 2 -->
-        <div class="gallery-slide">
-          <!-- 여기에 사진 2 -->
-          <div>사진 2</div>
-        </div>
-        
-        <!-- 슬라이드 3 -->
-        <div class="gallery-slide">
-          <!-- 여기에 사진 3 -->
-          <div>사진 3</div>
-        </div>
-        
-        <!-- 슬라이드 4 -->
-        <div class="gallery-slide">
-          <!-- 여기에 사진 4 -->
-          <div>사진 4</div>
-        </div>
-        
-        <!-- 슬라이드 5 -->
-        <div class="gallery-slide">
-          <!-- 여기에 사진 5 -->
-          <div>사진 5</div>
-        </div>
-        
-        <!-- 네비게이션 버튼 -->
-        <button class="gallery-nav prev" aria-label="이전 사진">‹</button>
-        <button class="gallery-nav next" aria-label="다음 사진">›</button>
-        
-        <!-- 인디케이터 -->
-        <div class="gallery-controls">
-          <div class="gallery-dot active" data-index="0"></div>
-          <div class="gallery-dot" data-index="1"></div>
-          <div class="gallery-dot" data-index="2"></div>
-          <div class="gallery-dot" data-index="3"></div>
-          <div class="gallery-dot" data-index="4"></div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 마무리 -->
-    <section class="closing">
-      <p class="closing-message">
-        사랑으로 자라온 첫 1년<br>
-        함께 기뻐해 주시는<br>
-        모든 분들께 감사드립니다
-      </p>
-      
-      <div class="closing-ornament">👶</div>
-      <div class="closing-name">이우진의<br/>아빠 이현건 · 엄마 원소희<br/>올림</div>
-    </section>
-  </div>
-  
-  <script>
-    // 갤러리 슬라이드 기능
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.gallery-slide');
-    const dots = document.querySelectorAll('.gallery-dot');
-    const totalSlides = slides.length;
-    
-    function showSlide(index) {
-      // 범위 체크
-      if (index >= totalSlides) currentSlide = 0;
-      else if (index < 0) currentSlide = totalSlides - 1;
-      else currentSlide = index;
-      
-      // 모든 슬라이드 숨기기
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-      
-      // 현재 슬라이드 보이기
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-    }
-    
-    // 이전/다음 버튼
-    document.querySelector('.gallery-nav.prev').addEventListener('click', () => {
-      showSlide(currentSlide - 1);
-    });
-    
-    document.querySelector('.gallery-nav.next').addEventListener('click', () => {
-      showSlide(currentSlide + 1);
-    });
-    
-    // 인디케이터 클릭
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        showSlide(index);
-      });
-    });
-    
-    // 자동 슬라이드 (5초마다)
-    setInterval(() => {
-      showSlide(currentSlide + 1);
-    }, 5000);
-    
-    // 키보드 네비게이션
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
-      if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
-    });
-    
-    // 스와이프 지원 (모바일)
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    const galleryContainer = document.querySelector('.gallery-container');
-    
-    galleryContainer.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    galleryContainer.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-    
-    function handleSwipe() {
-      if (touchEndX < touchStartX - 50) {
-        // 왼쪽으로 스와이프 (다음)
-        showSlide(currentSlide + 1);
-      }
-      if (touchEndX > touchStartX + 50) {
-        // 오른쪽으로 스와이프 (이전)
-        showSlide(currentSlide - 1);
-      }
-    }
-  </script>
+    </div>
+    <p class="account-note">
+      축하의 마음만으로도 충분히 감사드립니다
+    </p>
+  </section>
+
+  <section class="closing">
+    <p class="closing-message">
+      사랑으로 자라온 첫 1년<br>
+      함께 기뻐해 주시는 모든 분들께 감사드립니다
+    </p>
+    <div class="closing-name">
+      이우진의<br>
+      아빠 이현건 · 엄마 원소희 올림
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
