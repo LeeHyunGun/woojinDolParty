@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>이우진 돌잔치 초대장</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,22 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --cream:#faf8f3;
-  --terracotta:#d4a574;
-  --brown:#8b7355;
-  --dark:#3d3327;
-}
-
 *{margin:0;padding:0;box-sizing:border-box;}
-
-html,body{height:100%;}
+html,body{
+  width:100%;
+  height:100%;
+  overflow-x:hidden;
+}
 
 body{
   font-family:'Gowun Batang','Nanum Myeongjo',serif;
-  background:var(--cream);
-  color:var(--dark);
-  overflow:hidden;
+  background:#faf8f3;
+  color:#3d3327;
 }
 
 /* ===== SCROLL ===== */
@@ -39,53 +34,46 @@ body{
 /* ===== SECTION ===== */
 section{
   height:100vh;
+  width:100vw;
   scroll-snap-align:start;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
   padding:40px 20px;
 }
 
-/* ===== BACK DECOR ===== */
-.bg-circle{
-  position:absolute;
-  width:420px;
-  height:420px;
-  background:radial-gradient(circle,rgba(212,165,116,.25),transparent 70%);
-  border-radius:50%;
-  top:10%;
-  left:-150px;
-  z-index:0;
-}
-
-/* ===== HERO ===== */
-.hero{
+/* ===== TOP HERO ===== */
+.top-hero{
   text-align:center;
-  z-index:1;
 }
-.hero-name{
-  font-size:56px;
+.top-hero h1{
+  font-size:44px;
   font-weight:800;
-  animation:fadeUp 1.2s ease forwards;
+  margin-bottom:12px;
 }
-.hero-date{
-  margin-top:24px;
-  font-size:20px;
-  color:var(--terracotta);
+.top-hero .date{
+  font-size:18px;
+  color:#c39a6b;
+  margin-bottom:28px;
 }
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
+.top-hero .sub{
+  font-size:22px;
+  line-height:1.8;
 }
 
 /* ===== BABY SLIDER ===== */
-.baby-section{padding:0;}
-.baby-slider{width:100%;height:100%;overflow:hidden;}
+.baby-section{
+  padding:0;
+}
+.baby-slider{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
 .baby-track{
   display:flex;
   height:100%;
-  transition:transform 1s cubic-bezier(.77,0,.175,1);
+  transition:transform 0.8s ease;
 }
 .baby-slide{
   min-width:100%;
@@ -100,76 +88,95 @@ section{
 /* dots */
 .dots{
   position:absolute;
-  bottom:30px;
+  bottom:24px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   gap:8px;
 }
 .dot{
-  width:8px;
-  height:8px;
+  width:6px;
+  height:6px;
   border-radius:50%;
   background:rgba(255,255,255,.5);
 }
-.dot.active{background:#fff;transform:scale(1.3);}
+.dot.active{
+  background:#fff;
+  transform:scale(1.4);
+}
 
 /* ===== CARD ===== */
 .card{
   background:#fff;
-  max-width:680px;
   width:100%;
-  padding:60px 40px;
-  box-shadow:0 20px 60px rgba(0,0,0,.08);
+  max-width:640px;
+  padding:48px 28px;
+  box-shadow:0 12px 40px rgba(0,0,0,.08);
   text-align:center;
-  z-index:1;
 }
-.card p{font-size:20px;line-height:2.2;}
+.card p{
+  font-size:19px;
+  line-height:2.1;
+}
 
 /* ===== INFO ===== */
 .info-row{
   display:grid;
-  grid-template-columns:80px 1fr;
-  gap:16px;
+  grid-template-columns:70px 1fr;
+  gap:14px;
   padding:14px 0;
-  border-bottom:1px solid rgba(0,0,0,.1);
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
 .info-row:last-child{border-bottom:none;}
-.info-label{font-weight:700;color:var(--brown);}
+.info-label{
+  font-weight:700;
+  color:#8b7355;
+}
 
 .map-btns{
   display:flex;
-  gap:12px;
+  gap:10px;
   margin-top:24px;
 }
 .map-btns a{
   flex:1;
-  padding:14px;
-  border:1px solid var(--terracotta);
-  color:var(--terracotta);
+  padding:14px 0;
+  border:1px solid #d4a574;
+  color:#d4a574;
   text-decoration:none;
+  font-size:14px;
 }
 
 /* ===== ACCOUNT ===== */
 .account-row{
   display:grid;
   grid-template-columns:60px 1fr auto;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid rgba(0,0,0,.1);
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
-.account-info{text-align:right;font-family:system-ui;}
+.account-info{
+  text-align:right;
+  font-family:system-ui;
+}
 .copy-btn{
-  border:1px solid var(--terracotta);
+  border:1px solid #d4a574;
   background:none;
-  color:var(--terracotta);
+  color:#d4a574;
   padding:6px 10px;
+  font-size:12px;
+}
+
+.footer-msg{
+  margin-top:24px;
+  font-size:14px;
+  color:#8b7355;
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:640px){
-  .hero-name{font-size:42px;}
-  .card{padding:40px 24px;}
+  .top-hero h1{font-size:36px;}
+  .top-hero .sub{font-size:20px;}
 }
 </style>
 </head>
@@ -178,7 +185,19 @@ section{
 
 <div class="scroll" id="scroll">
 
-<!-- BABY AUTO INTRO -->
+<!-- TOP -->
+<section>
+  <div class="top-hero">
+    <h1>이우진</h1>
+    <div class="date">2026. 04. 04 · SAT</div>
+    <div class="sub">
+      첫 생일에 초대합니다<br>
+      <strong>이우진 돌잔치</strong>
+    </div>
+  </div>
+</section>
+
+<!-- BABY -->
 <section class="baby-section">
   <div class="baby-slider">
     <div class="baby-track" id="track">
@@ -190,18 +209,8 @@ section{
   </div>
 </section>
 
-<!-- HERO -->
-<section>
-  <div class="bg-circle"></div>
-  <div class="hero">
-    <h1 class="hero-name">이우진</h1>
-    <div class="hero-date">2026. 04. 04 · SAT</div>
-  </div>
-</section>
-
 <!-- MESSAGE -->
 <section>
-  <div class="bg-circle" style="left:auto;right:-150px"></div>
   <div class="card">
     <p>
       작은 손으로 채워온 시간 속에서<br>
@@ -242,18 +251,15 @@ section{
       <span class="account-info">0000-00-000000</span>
       <button class="copy-btn" data-copy="0000-00-000000">복사</button>
     </div>
-    <p style="margin-top:24px;font-size:14px;color:var(--brown)">
+    <div class="footer-msg">
       전해주시는 마음, 소중히 간직하겠습니다
-    </p>
+    </div>
   </div>
 </section>
 
 </div>
 
 <script>
-/* AUTO INTRO */
-setTimeout(()=>document.getElementById('scroll').scrollTo({top:window.innerHeight,behavior:'smooth'}),2200);
-
 /* SLIDER */
 const track=document.getElementById('track');
 const dots=document.getElementById('dots');
