@@ -49,9 +49,7 @@ section {
 }
 
 /* ===== 히어로 ===== */
-.hero {
-  text-align:center;
-}
+.hero { text-align:center; }
 .hero-name {
   font-family:'Nanum Myeongjo',serif;
   font-size:52px;
@@ -79,7 +77,6 @@ section {
   scroll-behavior:smooth;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  overscroll-behavior-x: contain;
 }
 .slider::-webkit-scrollbar { display:none; }
 
@@ -92,7 +89,6 @@ section {
   position:relative;
 }
 
-/* 오버레이 */
 .slide::after {
   content:'';
   position:absolute;
@@ -100,7 +96,6 @@ section {
   background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.55));
 }
 
-/* 성장 문구 */
 .slide-text {
   position:absolute;
   bottom:80px;
@@ -150,9 +145,7 @@ section {
   border-radius:50%;
   background:rgba(255,255,255,.5);
 }
-.dot.active {
-  background:#fff;
-}
+.dot.active { background:#fff; }
 
 /* ===== 카드 ===== */
 .card {
@@ -198,6 +191,41 @@ section {
   line-height:2;
 }
 
+/* ===== 최상단 플로팅 버튼 ===== */
+.floating-top-btn {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(212,165,116,.9);
+  color:#fff;
+  font-size:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:999;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  animation: floatUpDown 3s ease-in-out infinite;
+  opacity:0;
+  pointer-events:none;
+  transition:.4s;
+}
+
+@keyframes floatUpDown {
+  0%{transform:translateY(-50%)}
+  50%{transform:translateY(calc(-50% - 10px))}
+  100%{transform:translateY(-50%)}
+}
+
+.floating-top-btn.show {
+  opacity:1;
+  pointer-events:auto;
+}
+
 @media(max-width:640px){
   .hero-name{font-size:42px;}
 }
@@ -208,7 +236,6 @@ section {
 
 <div class="snap-container">
 
-<!-- 히어로 -->
 <section>
   <div class="inner hero">
     <p>First Birthday</p>
@@ -218,49 +245,32 @@ section {
   </div>
 </section>
 
-<!-- 아기 사진 슬라이드 -->
 <section class="slider-section">
   <div class="slider" id="slider">
-
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1604079628040-94301bb21b91')">
       <div class="slide-text">태어난 지 100일<br>웃음이 많아졌어요</div>
     </div>
-
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1546015720-b8b30df5aa27')">
       <div class="slide-text">처음 뒤집기에 성공한 날</div>
     </div>
-
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519689680058-324335c77eba')">
       <div class="slide-text">사랑 속에서 자란 첫 1년</div>
     </div>
-
   </div>
 
   <div class="slide-arrow left" onclick="moveSlide(-1)">‹</div>
   <div class="slide-arrow right" onclick="moveSlide(1)">›</div>
-
   <div class="indicators" id="indicators"></div>
 </section>
 
-<!-- 행사 정보 -->
 <section>
   <div class="inner card">
-    <div class="info-row">
-      <div class="label">일시</div>
-      <div>2026년 4월 4일 토요일<br>오전 11시</div>
-    </div>
-    <div class="info-row">
-      <div class="label">장소</div>
-      <div>별내 차림</div>
-    </div>
-    <div class="info-row">
-      <div class="label">주소</div>
-      <div>경기 남양주시 두물로 19<br>메가박스 5층</div>
-    </div>
+    <div class="info-row"><div class="label">일시</div><div>2026년 4월 4일 토요일<br>오전 11시</div></div>
+    <div class="info-row"><div class="label">장소</div><div>별내 차림</div></div>
+    <div class="info-row"><div class="label">주소</div><div>경기 남양주시 두물로 19<br>메가박스 5층</div></div>
   </div>
 </section>
 
-<!-- 감사 메시지 -->
 <section>
   <div class="inner card message">
     작은 손으로 자라온 첫 1년<br>
@@ -269,72 +279,73 @@ section {
   </div>
 </section>
 
-<!-- 계좌 -->
 <section>
   <div class="inner card">
-    <div class="account-row">
-      <strong>아빠</strong>
-      <span>카카오 3333-15-9625203</span>
-      <button class="copy-btn" data-copy="카카오 3333-15-9625203">복사</button>
-    </div>
-    <div class="account-row">
-      <strong>엄마</strong>
-      <span></span>
-      <button class="copy-btn" data-copy="">복사</button>
-    </div>
+    <div class="account-row"><strong>아빠</strong><span>카카오 3333-15-9625203</span><button class="copy-btn" data-copy="카카오 3333-15-9625203">복사</button></div>
+    <div class="account-row"><strong>엄마</strong><span>신한 110-234-567890</span><button class="copy-btn" data-copy="신한 110-234-567890">복사</button></div>
   </div>
 </section>
 
-<!-- 마무리 -->
 <section>
   <div class="inner closing">
     사랑으로 자라온 첫 1년<br>
     함께해 주셔서 감사합니다<br><br>
-    아빠 이현건 · 엄마 원소희
+    아빠 이현건 · 엄마 원소희<br><br>올림
   </div>
 </section>
 
 </div>
 
+<div class="floating-top-btn" id="topBtn">↑</div>
+
 <script>
 /* 계좌 복사 */
-document.querySelectorAll('.copy-btn').forEach(btn=>{
-  btn.onclick=()=>{
-    navigator.clipboard.writeText(btn.dataset.copy);
-    alert('복사되었습니다');
-  }
+document.querySelectorAll('.copy-btn').forEach(b=>{
+  b.onclick=()=>{navigator.clipboard.writeText(b.dataset.copy);alert('복사되었습니다');}
 });
 
-/* ===== 슬라이드 로직 ===== */
-const slider = document.getElementById('slider');
-const slides = document.querySelectorAll('.slide');
-const indicatorWrap = document.getElementById('indicators');
+/* 슬라이드 */
+const slider=document.getElementById('slider');
+const slides=document.querySelectorAll('.slide');
+const indicatorWrap=document.getElementById('indicators');
+let current=0, slideWidth=slider.clientWidth;
 
-let current = 0;
-let slideWidth = slider.clientWidth;
-
-/* 인디케이터 생성 */
-slides.forEach((_, i) => {
-  const dot = document.createElement('div');
-  dot.className = 'dot' + (i === 0 ? ' active' : '');
-  dot.onclick = () => goToSlide(i);
-  indicatorWrap.appendChild(dot);
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>goToSlide(i);
+  indicatorWrap.appendChild(d);
 });
-const dots = document.querySelectorAll('.dot');
+const dots=document.querySelectorAll('.dot');
 
-function updateDots() {
-  dots.forEach(d => d.classList.remove('active'));
+function updateDots(){
+  dots.forEach(d=>d.classList.remove('active'));
   dots[current]?.classList.add('active');
 }
-
-function goToSlide(index) {
-  current = index;
-  slider.scrollTo({
-    left: slideWidth * current,
-    behavior: 'smooth'
-  });
+function goToSlide(i){
+  current=i;
+  slider.scrollTo({left:slideWidth*i,behavior:'smooth'});
   updateDots();
 }
+function moveSlide(d){
+  current=(current+d+slides.length)%slides.length;
+  goToSlide(current);
+}
+setInterval(()=>moveSlide(1),4500);
+slider.addEventListener('scroll',()=>{
+  const i=Math.round(slider.scrollLeft/slideWidth);
+  if(i!==current){current=i;updateDots();}
+});
+window.addEventListener('resize',()=>slideWidth=slider.clientWidth);
 
-function moveSlide(dir) {
-  current = (current + dir + slides.lengt
+/* 최상단 버튼 */
+const snap=document.querySelector('.snap-container');
+const topBtn=document.getElementById('topBtn');
+snap.addEventListener('scroll',()=>{
+  snap.scrollTop>window.innerHeight*0.7?topBtn.classList.add('show'):topBtn.classList.remove('show');
+});
+topBtn.onclick=()=>snap.scrollTo({top:0,behavior:'smooth'});
+</script>
+
+</body>
+</html>
