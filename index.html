@@ -290,13 +290,46 @@
       border-color: var(--terracotta);
     }
     
-    .btn-primary {
-      background: var(--terracotta);
-      color: white;
+    /* 메시지 카드 */
+    .message-card {
+      background: white;
+      border-radius: 2px;
+      padding: 60px 40px;
+      margin: 60px 0;
+      box-shadow: 0 20px 60px rgba(61, 51, 39, 0.08);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
     }
     
-    .btn-primary::before {
-      background: var(--brown);
+    .message-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--terracotta), var(--accent), var(--terracotta));
+    }
+    
+    .message-icon {
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+    
+    .message-content {
+      font-size: 20px;
+      line-height: 2.2;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    
+    .message-sub {
+      font-size: 16px;
+      color: var(--brown);
+      line-height: 1.8;
+      margin-top: 30px;
     }
     
     /* 갤러리 섹션 */
@@ -453,6 +486,14 @@
         padding: 40px 24px;
       }
       
+      .message-card {
+        padding: 50px 24px;
+      }
+      
+      .message-content {
+        font-size: 18px;
+      }
+      
       .info-row {
         grid-template-columns: 80px 1fr;
         gap: 12px;
@@ -516,19 +557,20 @@
       </div>
     </section>
     
-    <!-- 참석 안내 -->
-    <section class="info-card">
-      <h2 class="info-title">참석 안내</h2>
-      <p style="text-align: center; color: var(--brown); margin-bottom: 30px; line-height: 1.8;">
-        소중한 자리를 함께 해주시는<br>
-        모든 분들께 감사드립니다<br><br>
-        참석 여부를 미리 알려주시면<br>
-        더욱 정성스럽게 준비하겠습니다
+    <!-- 감사 메시지 -->
+    <section class="message-card">
+      <div class="message-icon">💝</div>
+      <p class="message-content">
+        작은 손과 발로<br>
+        하루하루 성장해온 365일<br>
+        <br>
+        우진이의 첫 생일을<br>
+        함께 축하해 주세요
       </p>
-      
-      <div class="button-group">
-        <a href="https://forms.gle/" target="_blank" rel="noreferrer" class="btn btn-primary">참석 여부 남기기</a>
-      </div>
+      <p class="message-sub">
+        바쁘신 중에도 자리 빛내주시는<br>
+        모든 분들께 감사드립니다
+      </p>
     </section>
     
     <!-- 갤러리 섹션 -->
