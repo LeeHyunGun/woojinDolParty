@@ -85,7 +85,7 @@
       background:linear-gradient(90deg,var(--terracotta),var(--accent),var(--terracotta));
     }
 
-    /* 초대 정보 */
+    /* 행사 정보 */
     .info-row {
       display:grid;
       grid-template-columns:100px 1fr;
@@ -143,23 +143,34 @@
       font-weight:700;
     }
     .account-list {
-      max-width:420px;
+      max-width:460px;
       margin:0 auto;
     }
     .account-row {
-      display:flex;
-      justify-content:space-between;
-      padding:12px 0;
-      font-size:14px;
+      display:grid;
+      grid-template-columns:60px 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 0;
       border-bottom:1px solid rgba(139,115,85,.15);
-      cursor:pointer;
     }
     .account-row:last-child{border-bottom:none;}
-    .account-name{font-weight:700;}
+    .account-name { font-weight:700; }
     .account-info {
       font-family:'Cormorant Garamond',serif;
       letter-spacing:.5px;
+      text-align:left;
     }
+
+    .copy-btn {
+      padding:6px 10px;
+      font-size:12px;
+      border:1px solid var(--terracotta);
+      background:transparent;
+      color:var(--terracotta);
+      cursor:pointer;
+    }
+
     .account-note {
       margin-top:22px;
       font-size:13px;
@@ -227,8 +238,7 @@
   <section class="card">
     <div class="message-divider"></div>
     <p class="message-content">
-      작은 손과 발로<br>
-      하루하루 자라온 시간 속에서<br><br>
+      작은 손과 발로 자라온 시간 속에서<br><br>
       우진이의 첫 생일을<br>
       함께해 주시면 감사하겠습니다
     </p>
@@ -239,16 +249,18 @@
 
   <!-- 계좌 -->
   <section class="account-section">
-    <p class="account-title">마음 전하실 곳 (터치 시 복사)</p>
+    <p class="account-title">마음 전하실 곳</p>
 
     <div class="account-list">
-      <div class="account-row" data-copy="국민 123-45-678901">
+      <div class="account-row">
         <span class="account-name">아빠</span>
-        <span class="account-info">국민 123-45-678901</span>
+        <span class="account-info">카카오 3333-15-9625203</span>
+        <button class="copy-btn" data-copy="카카오 3333-15-9625203">복사</button>
       </div>
-      <div class="account-row" data-copy="신한 110-234-567890">
+      <div class="account-row">
         <span class="account-name">엄마</span>
-        <span class="account-info">신한 110-234-567890</span>
+        <span class="account-info"></span>
+        <button class="copy-btn" data-copy="">복사</button>
       </div>
     </div>
 
@@ -272,10 +284,9 @@
 </div>
 
 <script>
-  // 계좌 복사
-  document.querySelectorAll('.account-row').forEach(row => {
-    row.addEventListener('click', () => {
-      const text = row.dataset.copy;
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.dataset.copy;
       navigator.clipboard.writeText(text).then(() => {
         alert('계좌번호가 복사되었습니다');
       });
